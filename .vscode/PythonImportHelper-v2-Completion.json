@@ -1,0 +1,627 @@
+[
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "tflite_runtime.interpreter",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tflite_runtime.interpreter",
+        "description": "tflite_runtime.interpreter",
+        "detail": "tflite_runtime.interpreter",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageTk",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "tensorflow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "tkinter",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "filedialog",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "ttk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "filedialog",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "ttk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "kind": 2,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "def load_model():\n    \"\"\"Load the TFLite model\"\"\"\n    global interpreter, input_details, output_details\n    logging.info(\"Loading model...\")\n    # Check if the model file exists\n    import os\n    model_path = \"Model1/plastic_classifier.tflite\"\n    if not os.path.exists(model_path):\n        logging.error(f\"Model file not found at {os.path.abspath(model_path)}\")\n        raise FileNotFoundError(f\"Model file not found at {os.path.abspath(model_path)}\")",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess_image",
+        "kind": 2,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "def preprocess_image(image_bytes):\n    \"\"\"Preprocess the image bytes into the format needed by the model\"\"\"\n    logging.info(\"Preprocessing image...\")\n    image = Image.open(BytesIO(image_bytes))\n    image = image.convert('RGB')\n    img_array = np.array(image)\n    img_array = cv2.resize(img_array, (128, 128))\n    img_array = np.expand_dims(img_array, axis=0).astype(np.float32)\n    logging.info(\"Image preprocessed successfully.\")\n    return img_array",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "segment_image",
+        "kind": 2,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "def segment_image(image):\n    \"\"\"Segment the image using the same method as training\"\"\"\n    logging.info(\"Segmenting image...\")\n    if image.dtype != np.uint8:\n        image = (image * 255).astype(np.uint8)\n    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)\n    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)\n    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)\n    if contours:\n        largest_contour = max(contours, key=cv2.contourArea)",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "predict",
+        "kind": 2,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "def predict():\n    \"\"\"Endpoint to predict plastic type from uploaded image\"\"\"\n    logging.info(\"Received request for prediction.\")\n    if 'image' not in request.files:\n        logging.error(\"No image provided in the request.\")\n        return jsonify({'error': 'No image provided'}), 400\n    try:\n        image_file = request.files['image']\n        image_bytes = image_file.read()\n        processed_image = preprocess_image(image_bytes)",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app)  # Enable CORS for all routes\n# Global variables for model and interpreter\ninterpreter = None\ninput_details = None\noutput_details = None\ndef load_model():\n    \"\"\"Load the TFLite model\"\"\"\n    global interpreter, input_details, output_details\n    logging.info(\"Loading model...\")",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "interpreter",
+        "kind": 5,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "interpreter = None\ninput_details = None\noutput_details = None\ndef load_model():\n    \"\"\"Load the TFLite model\"\"\"\n    global interpreter, input_details, output_details\n    logging.info(\"Loading model...\")\n    # Check if the model file exists\n    import os\n    model_path = \"Model1/plastic_classifier.tflite\"",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "input_details",
+        "kind": 5,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "input_details = None\noutput_details = None\ndef load_model():\n    \"\"\"Load the TFLite model\"\"\"\n    global interpreter, input_details, output_details\n    logging.info(\"Loading model...\")\n    # Check if the model file exists\n    import os\n    model_path = \"Model1/plastic_classifier.tflite\"\n    if not os.path.exists(model_path):",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "output_details",
+        "kind": 5,
+        "importPath": "dump.app",
+        "description": "dump.app",
+        "peekOfCode": "output_details = None\ndef load_model():\n    \"\"\"Load the TFLite model\"\"\"\n    global interpreter, input_details, output_details\n    logging.info(\"Loading model...\")\n    # Check if the model file exists\n    import os\n    model_path = \"Model1/plastic_classifier.tflite\"\n    if not os.path.exists(model_path):\n        logging.error(f\"Model file not found at {os.path.abspath(model_path)}\")",
+        "detail": "dump.app",
+        "documentation": {}
+    },
+    {
+        "label": "extract_code_cells",
+        "kind": 2,
+        "importPath": "util.list_code",
+        "description": "util.list_code",
+        "peekOfCode": "def extract_code_cells(ipynb_file):\n    # Open and load the .ipynb file\n    with open(ipynb_file, 'r', encoding='utf-8') as file:\n        notebook = json.load(file)\n    # List to store code blocks\n    code_blocks = []\n    # Loop through cells and extract code\n    for cell in notebook['cells']:\n        if cell['cell_type'] == 'code':\n            # Join the source lines to form the complete code block",
+        "detail": "util.list_code",
+        "documentation": {}
+    },
+    {
+        "label": "ipynb_file",
+        "kind": 5,
+        "importPath": "util.list_code",
+        "description": "util.list_code",
+        "peekOfCode": "ipynb_file = 'train.ipynb'\ncode_cells = extract_code_cells(ipynb_file)\n# Print or process the code blocks\nfor i, code in enumerate(code_cells, 1):\n    print(f\"Code Block {i}:\\n{code}\\n{'-'*40}\")",
+        "detail": "util.list_code",
+        "documentation": {}
+    },
+    {
+        "label": "code_cells",
+        "kind": 5,
+        "importPath": "util.list_code",
+        "description": "util.list_code",
+        "peekOfCode": "code_cells = extract_code_cells(ipynb_file)\n# Print or process the code blocks\nfor i, code in enumerate(code_cells, 1):\n    print(f\"Code Block {i}:\\n{code}\\n{'-'*40}\")",
+        "detail": "util.list_code",
+        "documentation": {}
+    },
+    {
+        "label": "notebook_file",
+        "kind": 5,
+        "importPath": "util.list_markdowns",
+        "description": "util.list_markdowns",
+        "peekOfCode": "notebook_file = 'train.ipynb'  # replace with your file name\nwith open(notebook_file) as f:\n    notebook_content = json.load(f)\n# List all Markdown cells\nmarkdown_cells = [cell['source'] for cell in notebook_content['cells'] if cell['cell_type'] == 'markdown']\n# Print Markdown cells\nfor i, markdown in enumerate(markdown_cells):\n    print(f\"Markdown Cell {i + 1}:\\n{markdown}\\n\")",
+        "detail": "util.list_markdowns",
+        "documentation": {}
+    },
+    {
+        "label": "markdown_cells",
+        "kind": 5,
+        "importPath": "util.list_markdowns",
+        "description": "util.list_markdowns",
+        "peekOfCode": "markdown_cells = [cell['source'] for cell in notebook_content['cells'] if cell['cell_type'] == 'markdown']\n# Print Markdown cells\nfor i, markdown in enumerate(markdown_cells):\n    print(f\"Markdown Cell {i + 1}:\\n{markdown}\\n\")",
+        "detail": "util.list_markdowns",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess_image",
+        "kind": 2,
+        "importPath": "predict",
+        "description": "predict",
+        "peekOfCode": "def preprocess_image(image_path, target_size=(128, 128)):\n    \"\"\"\n    Load and preprocess a single image using the same steps as training\n    \"\"\"\n    # Read and check image\n    img = cv2.imread(image_path)\n    if img is None:\n        raise ValueError(f\"Failed to load image: {image_path}\")\n    # Convert to RGB\n    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)",
+        "detail": "predict",
+        "documentation": {}
+    },
+    {
+        "label": "segment_image",
+        "kind": 2,
+        "importPath": "predict",
+        "description": "predict",
+        "peekOfCode": "def segment_image(image):\n    \"\"\"\n    Segment the image using the same method as training\n    \"\"\"\n    # Ensure image is in uint8 format\n    if image.dtype != np.uint8:\n        image = (image * 255).astype(np.uint8)\n    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)\n    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)\n    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)",
+        "detail": "predict",
+        "documentation": {}
+    },
+    {
+        "label": "predict_plastic_type",
+        "kind": 2,
+        "importPath": "predict",
+        "description": "predict",
+        "peekOfCode": "def predict_plastic_type(image_path, model_path):\n    \"\"\"\n    Make a prediction using TFLite model\n    \"\"\"\n    # Label mapping (same as training)\n    label_map = {0: 'HDPE', 1: 'LDPE', 2: 'Other', 3: 'PET', 4: 'PP', 5: 'PS', 6: 'PVC'}\n    # Load and preprocess the image\n    processed_image = preprocess_image(image_path)\n    # Add batch dimension and convert to float32\n    input_image = np.expand_dims(processed_image, axis=0).astype(np.float32)",
+        "detail": "predict",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess_image",
+        "kind": 2,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "def preprocess_image(image_path, target_size=(128, 128)):\n    img = cv2.imread(image_path)\n    if img is None:\n        raise ValueError(f\"Failed to load image: {image_path}\")\n    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)\n    img = cv2.resize(img, target_size)\n    img = img.astype(np.uint8)\n    return segment_image(img)\ndef segment_image(image):\n    if image.dtype != np.uint8:",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "segment_image",
+        "kind": 2,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "def segment_image(image):\n    if image.dtype != np.uint8:\n        image = (image * 255).astype(np.uint8)\n    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)\n    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)\n    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)\n    if contours:\n        largest_contour = max(contours, key=cv2.contourArea)\n        mask = np.zeros(image.shape[:2], dtype=np.uint8)\n        cv2.drawContours(mask, [largest_contour], 0, 255, -1)",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "predict_plastic_type",
+        "kind": 2,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "def predict_plastic_type(image_path, model_path):\n    label_map = {0: 'HDPE', 1: 'LDPE', 2: 'Other', 3: 'PET', 4: 'PP', 5: 'PS', 6: 'PVC'}\n    processed_image = preprocess_image(image_path)\n    input_image = np.expand_dims(processed_image, axis=0).astype(np.float32)\n    interpreter = tf.lite.Interpreter(model_path=model_path)\n    interpreter.allocate_tensors()\n    input_details = interpreter.get_input_details()\n    output_details = interpreter.get_output_details()\n    interpreter.set_tensor(input_details[0]['index'], input_image)\n    interpreter.invoke()",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "open_file_dialog",
+        "kind": 2,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "def open_file_dialog():\n    file_path = filedialog.askopenfilename(filetypes=[(\"Image Files\", \"*.jpg;*.jpeg;*.png\")])\n    if file_path:\n        entry_image_path.delete(0, tk.END)\n        entry_image_path.insert(0, file_path)\ndef run_prediction():\n    image_path = entry_image_path.get()\n    model_path = entry_model_path.get()\n    if not image_path or not model_path:\n        messagebox.showwarning(\"Input Error\", \"Please provide both image and model paths.\")",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "run_prediction",
+        "kind": 2,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "def run_prediction():\n    image_path = entry_image_path.get()\n    model_path = entry_model_path.get()\n    if not image_path or not model_path:\n        messagebox.showwarning(\"Input Error\", \"Please provide both image and model paths.\")\n        return\n    try:\n        predicted_type, confidence = predict_plastic_type(image_path, model_path)\n        lbl_result.config(text=f\"Predicted: {predicted_type} (Confidence: {confidence:.2%})\")\n    except Exception as e:",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "root = tk.Tk()\nroot.title(\"Plastic Type Classifier\")\nroot.geometry(\"500x300\")\n# Image path input\nlbl_image_path = tk.Label(root, text=\"Image Path:\")\nlbl_image_path.pack(pady=5)\nentry_image_path = tk.Entry(root, width=50)\nentry_image_path.pack(pady=5)\nbtn_browse_image = tk.Button(root, text=\"Browse\", command=open_file_dialog)\nbtn_browse_image.pack(pady=5)",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "lbl_image_path",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "lbl_image_path = tk.Label(root, text=\"Image Path:\")\nlbl_image_path.pack(pady=5)\nentry_image_path = tk.Entry(root, width=50)\nentry_image_path.pack(pady=5)\nbtn_browse_image = tk.Button(root, text=\"Browse\", command=open_file_dialog)\nbtn_browse_image.pack(pady=5)\n# Model path input\nlbl_model_path = tk.Label(root, text=\"Model Path:\")\nlbl_model_path.pack(pady=5)\nentry_model_path = tk.Entry(root, width=50)",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "entry_image_path",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "entry_image_path = tk.Entry(root, width=50)\nentry_image_path.pack(pady=5)\nbtn_browse_image = tk.Button(root, text=\"Browse\", command=open_file_dialog)\nbtn_browse_image.pack(pady=5)\n# Model path input\nlbl_model_path = tk.Label(root, text=\"Model Path:\")\nlbl_model_path.pack(pady=5)\nentry_model_path = tk.Entry(root, width=50)\nentry_model_path.insert(0, \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\")  # Default model path\nentry_model_path.pack(pady=5)",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "btn_browse_image",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "btn_browse_image = tk.Button(root, text=\"Browse\", command=open_file_dialog)\nbtn_browse_image.pack(pady=5)\n# Model path input\nlbl_model_path = tk.Label(root, text=\"Model Path:\")\nlbl_model_path.pack(pady=5)\nentry_model_path = tk.Entry(root, width=50)\nentry_model_path.insert(0, \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\")  # Default model path\nentry_model_path.pack(pady=5)\n# Prediction button\nbtn_predict = tk.Button(root, text=\"Predict Plastic Type\", command=run_prediction)",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "lbl_model_path",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "lbl_model_path = tk.Label(root, text=\"Model Path:\")\nlbl_model_path.pack(pady=5)\nentry_model_path = tk.Entry(root, width=50)\nentry_model_path.insert(0, \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\")  # Default model path\nentry_model_path.pack(pady=5)\n# Prediction button\nbtn_predict = tk.Button(root, text=\"Predict Plastic Type\", command=run_prediction)\nbtn_predict.pack(pady=10)\n# Result display\nlbl_result = tk.Label(root, text=\"Result will appear here\", font=(\"Arial\", 14))",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "entry_model_path",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "entry_model_path = tk.Entry(root, width=50)\nentry_model_path.insert(0, \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\")  # Default model path\nentry_model_path.pack(pady=5)\n# Prediction button\nbtn_predict = tk.Button(root, text=\"Predict Plastic Type\", command=run_prediction)\nbtn_predict.pack(pady=10)\n# Result display\nlbl_result = tk.Label(root, text=\"Result will appear here\", font=(\"Arial\", 14))\nlbl_result.pack(pady=20)\n# Run the GUI",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "btn_predict",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "btn_predict = tk.Button(root, text=\"Predict Plastic Type\", command=run_prediction)\nbtn_predict.pack(pady=10)\n# Result display\nlbl_result = tk.Label(root, text=\"Result will appear here\", font=(\"Arial\", 14))\nlbl_result.pack(pady=20)\n# Run the GUI\nroot.mainloop()",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "lbl_result",
+        "kind": 5,
+        "importPath": "predict_gui",
+        "description": "predict_gui",
+        "peekOfCode": "lbl_result = tk.Label(root, text=\"Result will appear here\", font=(\"Arial\", 14))\nlbl_result.pack(pady=20)\n# Run the GUI\nroot.mainloop()",
+        "detail": "predict_gui",
+        "documentation": {}
+    },
+    {
+        "label": "preprocess_image",
+        "kind": 2,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "def preprocess_image(image_path, target_size=(128, 128)):\n    img = cv2.imread(image_path)\n    if img is None:\n        raise ValueError(f\"Failed to load image: {image_path}\")\n    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)\n    img = cv2.resize(img, target_size)\n    img = img.astype(np.uint8)\n    return segment_image(img)\ndef segment_image(image):\n    if image.dtype != np.uint8:",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "segment_image",
+        "kind": 2,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "def segment_image(image):\n    if image.dtype != np.uint8:\n        image = (image * 255).astype(np.uint8)\n    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)\n    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)\n    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)\n    if contours:\n        largest_contour = max(contours, key=cv2.contourArea)\n        mask = np.zeros(image.shape[:2], dtype=np.uint8)\n        cv2.drawContours(mask, [largest_contour], 0, 255, -1)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "predict_plastic_type",
+        "kind": 2,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "def predict_plastic_type(image_path, model_path):\n    label_map = {0: 'HDPE', 1: 'LDPE', 2: 'Other', 3: 'PET', 4: 'PP', 5: 'PS', 6: 'PVC'}\n    processed_image = preprocess_image(image_path)\n    input_image = np.expand_dims(processed_image, axis=0).astype(np.float32)\n    interpreter = tf.lite.Interpreter(model_path=model_path)\n    interpreter.allocate_tensors()\n    input_details = interpreter.get_input_details()\n    output_details = interpreter.get_output_details()\n    interpreter.set_tensor(input_details[0]['index'], input_image)\n    interpreter.invoke()",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "open_file_dialog",
+        "kind": 2,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "def open_file_dialog():\n    file_path = filedialog.askopenfilename(filetypes=[(\"Image Files\", \"*.jpg;*.jpeg;*.png\")])\n    if file_path:\n        # Display image on the screen\n        show_image(file_path)\n        # Store the image path\n        image_path.set(file_path)\ndef show_image(image_path):\n    img = Image.open(image_path)\n    img = img.resize((200, 200), Image.Resampling.LANCZOS)  # Updated line",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "show_image",
+        "kind": 2,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "def show_image(image_path):\n    img = Image.open(image_path)\n    img = img.resize((200, 200), Image.Resampling.LANCZOS)  # Updated line\n    img_tk = ImageTk.PhotoImage(img)\n    lbl_image.config(image=img_tk)\n    lbl_image.image = img_tk\ndef run_prediction():\n    image_path_value = image_path.get() \n    if not image_path_value:\n        messagebox.showwarning(\"Input Error\", \"Please choose an image.\")",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "run_prediction",
+        "kind": 2,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "def run_prediction():\n    image_path_value = image_path.get() \n    if not image_path_value:\n        messagebox.showwarning(\"Input Error\", \"Please choose an image.\")\n        return\n    try:\n        predicted_type, confidence = predict_plastic_type(image_path_value, model_path)\n        lbl_result.config(text=f\"Predicted: {predicted_type}\\nConfidence: {confidence:.2%}\")\n    except Exception as e:\n        messagebox.showerror(\"Error\", f\"Failed to predict plastic type: {str(e)}\")",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "root = tk.Tk()\nroot.title(\"Plastic Classifier\")\nroot.geometry(\"320x640\")\nroot.configure(bg=\"#f8f9fa\")\n# Style\nheader_font = (\"Helvetica\", 16, \"bold\")\nlabel_font = (\"Helvetica\", 12)\nbutton_font = (\"Helvetica\", 12, \"bold\")\nresult_font = (\"Helvetica\", 14)\n# Header",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "header_font",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "header_font = (\"Helvetica\", 16, \"bold\")\nlabel_font = (\"Helvetica\", 12)\nbutton_font = (\"Helvetica\", 12, \"bold\")\nresult_font = (\"Helvetica\", 14)\n# Header\nheader = tk.Label(root, text=\"Plastic Classifier\", font=header_font, bg=\"#007bff\", fg=\"white\", height=2)\nheader.pack(fill=tk.X)\n# Choose image button and display\nframe_image = tk.Frame(root, bg=\"#f8f9fa\", pady=10)\nframe_image.pack(fill=tk.X)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "label_font",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "label_font = (\"Helvetica\", 12)\nbutton_font = (\"Helvetica\", 12, \"bold\")\nresult_font = (\"Helvetica\", 14)\n# Header\nheader = tk.Label(root, text=\"Plastic Classifier\", font=header_font, bg=\"#007bff\", fg=\"white\", height=2)\nheader.pack(fill=tk.X)\n# Choose image button and display\nframe_image = tk.Frame(root, bg=\"#f8f9fa\", pady=10)\nframe_image.pack(fill=tk.X)\nbtn_choose_image = tk.Button(frame_image, text=\"Choose Image\", font=button_font, command=open_file_dialog, width=20)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "button_font",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "button_font = (\"Helvetica\", 12, \"bold\")\nresult_font = (\"Helvetica\", 14)\n# Header\nheader = tk.Label(root, text=\"Plastic Classifier\", font=header_font, bg=\"#007bff\", fg=\"white\", height=2)\nheader.pack(fill=tk.X)\n# Choose image button and display\nframe_image = tk.Frame(root, bg=\"#f8f9fa\", pady=10)\nframe_image.pack(fill=tk.X)\nbtn_choose_image = tk.Button(frame_image, text=\"Choose Image\", font=button_font, command=open_file_dialog, width=20)\nbtn_choose_image.pack(pady=5)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "result_font",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "result_font = (\"Helvetica\", 14)\n# Header\nheader = tk.Label(root, text=\"Plastic Classifier\", font=header_font, bg=\"#007bff\", fg=\"white\", height=2)\nheader.pack(fill=tk.X)\n# Choose image button and display\nframe_image = tk.Frame(root, bg=\"#f8f9fa\", pady=10)\nframe_image.pack(fill=tk.X)\nbtn_choose_image = tk.Button(frame_image, text=\"Choose Image\", font=button_font, command=open_file_dialog, width=20)\nbtn_choose_image.pack(pady=5)\n# Image preview display",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "header = tk.Label(root, text=\"Plastic Classifier\", font=header_font, bg=\"#007bff\", fg=\"white\", height=2)\nheader.pack(fill=tk.X)\n# Choose image button and display\nframe_image = tk.Frame(root, bg=\"#f8f9fa\", pady=10)\nframe_image.pack(fill=tk.X)\nbtn_choose_image = tk.Button(frame_image, text=\"Choose Image\", font=button_font, command=open_file_dialog, width=20)\nbtn_choose_image.pack(pady=5)\n# Image preview display\nlbl_image = tk.Label(root, bg=\"#f8f9fa\")\nlbl_image.pack(pady=20)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "frame_image",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "frame_image = tk.Frame(root, bg=\"#f8f9fa\", pady=10)\nframe_image.pack(fill=tk.X)\nbtn_choose_image = tk.Button(frame_image, text=\"Choose Image\", font=button_font, command=open_file_dialog, width=20)\nbtn_choose_image.pack(pady=5)\n# Image preview display\nlbl_image = tk.Label(root, bg=\"#f8f9fa\")\nlbl_image.pack(pady=20)\n# Prediction button\nbtn_predict = tk.Button(root, text=\"Predict\", font=button_font, bg=\"#28a745\", fg=\"white\", command=run_prediction)\nbtn_predict.pack(pady=20, ipadx=10, ipady=5)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "btn_choose_image",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "btn_choose_image = tk.Button(frame_image, text=\"Choose Image\", font=button_font, command=open_file_dialog, width=20)\nbtn_choose_image.pack(pady=5)\n# Image preview display\nlbl_image = tk.Label(root, bg=\"#f8f9fa\")\nlbl_image.pack(pady=20)\n# Prediction button\nbtn_predict = tk.Button(root, text=\"Predict\", font=button_font, bg=\"#28a745\", fg=\"white\", command=run_prediction)\nbtn_predict.pack(pady=20, ipadx=10, ipady=5)\n# Result display\nlbl_result = tk.Label(root, text=\"Result will appear here\", font=result_font, bg=\"#f8f9fa\", fg=\"#212529\", wraplength=300, justify=\"center\")",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "lbl_image",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "lbl_image = tk.Label(root, bg=\"#f8f9fa\")\nlbl_image.pack(pady=20)\n# Prediction button\nbtn_predict = tk.Button(root, text=\"Predict\", font=button_font, bg=\"#28a745\", fg=\"white\", command=run_prediction)\nbtn_predict.pack(pady=20, ipadx=10, ipady=5)\n# Result display\nlbl_result = tk.Label(root, text=\"Result will appear here\", font=result_font, bg=\"#f8f9fa\", fg=\"#212529\", wraplength=300, justify=\"center\")\nlbl_result.pack(pady=20, fill=tk.BOTH)\n# Footer\nfooter = tk.Label(root, text=\"© 2025 Plastic Classifier\", font=(\"Helvetica\", 10), bg=\"#007bff\", fg=\"white\", height=1)",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "btn_predict",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "btn_predict = tk.Button(root, text=\"Predict\", font=button_font, bg=\"#28a745\", fg=\"white\", command=run_prediction)\nbtn_predict.pack(pady=20, ipadx=10, ipady=5)\n# Result display\nlbl_result = tk.Label(root, text=\"Result will appear here\", font=result_font, bg=\"#f8f9fa\", fg=\"#212529\", wraplength=300, justify=\"center\")\nlbl_result.pack(pady=20, fill=tk.BOTH)\n# Footer\nfooter = tk.Label(root, text=\"© 2025 Plastic Classifier\", font=(\"Helvetica\", 10), bg=\"#007bff\", fg=\"white\", height=1)\nfooter.pack(side=tk.BOTTOM, fill=tk.X)\n# To store the image path\nimage_path = tk.StringVar()",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "lbl_result",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "lbl_result = tk.Label(root, text=\"Result will appear here\", font=result_font, bg=\"#f8f9fa\", fg=\"#212529\", wraplength=300, justify=\"center\")\nlbl_result.pack(pady=20, fill=tk.BOTH)\n# Footer\nfooter = tk.Label(root, text=\"© 2025 Plastic Classifier\", font=(\"Helvetica\", 10), bg=\"#007bff\", fg=\"white\", height=1)\nfooter.pack(side=tk.BOTTOM, fill=tk.X)\n# To store the image path\nimage_path = tk.StringVar()\n# Model path (no longer part of the GUI but set in code)\nmodel_path = \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\"\n# Run the GUI",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "footer",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "footer = tk.Label(root, text=\"© 2025 Plastic Classifier\", font=(\"Helvetica\", 10), bg=\"#007bff\", fg=\"white\", height=1)\nfooter.pack(side=tk.BOTTOM, fill=tk.X)\n# To store the image path\nimage_path = tk.StringVar()\n# Model path (no longer part of the GUI but set in code)\nmodel_path = \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\"\n# Run the GUI\nroot.mainloop()",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "image_path",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "image_path = tk.StringVar()\n# Model path (no longer part of the GUI but set in code)\nmodel_path = \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\"\n# Run the GUI\nroot.mainloop()",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    },
+    {
+        "label": "model_path",
+        "kind": 5,
+        "importPath": "predict_gui_mobile",
+        "description": "predict_gui_mobile",
+        "peekOfCode": "model_path = \"D:/Projects/Plastic_tflite/Plastic/Model1/plastic_classifier.tflite\"\n# Run the GUI\nroot.mainloop()",
+        "detail": "predict_gui_mobile",
+        "documentation": {}
+    }
+]
